@@ -89,7 +89,7 @@ func run() {
 
 	imd := imdraw.New(nil)
 
-	const worldSize int = 20
+	const worldSize int = 80
 	world := make([][]bool, worldSize)
 	for i := range world {
 		world[i] = make([]bool, worldSize)
