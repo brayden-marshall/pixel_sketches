@@ -6,8 +6,11 @@ You can find more information about pixel [here](https://github.com/faiface/pixe
 ## Gallery
 
 <img src="./assets/recursive_trees.png" width="500">
+
 ---
+
 <img src="./assets/langtons_ant.png" width="500">
+
 ---
+
 <img src="./assets/barnsley_fern.png" width="500">
----
