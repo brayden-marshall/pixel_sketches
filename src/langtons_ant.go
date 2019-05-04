@@ -25,12 +25,14 @@ type Ant struct {
 }
 
 func drawWorld(world [][]bool, ant Ant, imd *imdraw.IMDraw) {
+	// interval is the side length of each internal square
 	var interval = windowSize / float64(len(world))
 	var min, max pixel.Vec
 	for row := range world {
 		min = pixel.V(float64(row)*interval, 0)
 		max = min.Add(pixel.V(interval, interval))
 		for col := range world[row] {
+			// choosing color to draw based on square's state
 			if ant.Row == row && ant.Col == col {
 				imd.Color = colornames.Red
 			} else if world[row][col] {
@@ -38,6 +40,8 @@ func drawWorld(world [][]bool, ant Ant, imd *imdraw.IMDraw) {
 			} else {
 				imd.Color = colornames.White
 			}
+
+			// drawing square and moving to next
 			imd.Push(min)
 			imd.Push(max)
 			imd.Rectangle(0)
@@ -105,9 +109,12 @@ func run() {
 	for !win.Closed() {
 		win.Clear(colornames.Snow)
 		imd.Clear()
+
 		drawWorld(world, ant, imd)
+
 		imd.Draw(win)
 		win.Update()
+
 		select {
 		case <-ticker.C:
 			moveAnt(&world, &ant)

@@ -22,9 +22,9 @@ func recursiveTree(imd *imdraw.IMDraw, size int, start pixel.Vec, length, angle 
 		return
 	}
 
-	angleRad := degreesToRadians(angle)
-	dx := length * math.Sin(angleRad)
-	dy := length * math.Cos(angleRad)
+	angleRadians := degreesToRadians(angle)
+	dx := length * math.Sin(angleRadians)
+	dy := length * math.Cos(angleRadians)
 	end := start.Add(pixel.V(dx, dy))
 
 	drawBranch(imd, start, end)
@@ -37,7 +37,7 @@ func degreesToRadians(degrees float64) float64 {
 	return degrees * (math.Pi / 180.0)
 }
 
-// convenience function to simplify drawing lines with a start and end vector
+// helper function to simplify drawing lines with a start and end vector
 func drawBranch(imd *imdraw.IMDraw, start, end pixel.Vec) {
 	imd.Push(start)
 	imd.Push(end)
